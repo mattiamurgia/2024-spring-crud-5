@@ -32,8 +32,6 @@ public class ServiceOrder {
         }
         return orders;
     }
-
-    
     public Optional<Order> findByIdOrder(Integer id) {
         return repoOrder.findById(id);
     }

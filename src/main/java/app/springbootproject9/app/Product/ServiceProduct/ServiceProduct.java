@@ -30,4 +30,18 @@ public class ServiceProduct {
     public void deleteProduct(Product Product) {
         repoProduct.delete(Product);
     }
+
+    public Product updateProduct(Integer id, Product product) throws Exception {
+        Optional<Product> productUpdate = repoProduct.findById(id);
+        if (productUpdate.isPresent()) {
+            Product Product = productUpdate.get();
+            Product.setNameProduct(product.getNameProduct());
+            Product.setPrice(product.getPrice());
+            Product.setVat(product.getVat());
+            repoProduct.save(Product);
+            return Product;
+        } else {
+            throw new Exception("Product non trovato " + id);
+        }
+    }
 }

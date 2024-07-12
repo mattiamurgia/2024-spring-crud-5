@@ -2,6 +2,7 @@ package app.springbootproject9.app.Product.Pojo;
 
 import java.util.List;
 
+import app.springbootproject9.app.FullPrice.FullPrice;
 import app.springbootproject9.app.Order.Pojo.Order;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
 @Entity
-public class Product {
+public class Product implements FullPrice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,7 +79,8 @@ public class Product {
         this.orders = orders;
     }
 
-    public int getFullPriceProduct(boolean withVat) {
+    @Override
+    public Integer getFullPrice(boolean withVat) {
         if (withVat) {
             return getPrice() + (getPrice() * getVat() / 100);
         } else {

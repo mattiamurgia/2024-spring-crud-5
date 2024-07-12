@@ -31,11 +31,12 @@ public class AppApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String[] args) {
+	public void run(String[] args) throws Exception {
 		System.out.println("Start Running ------> ");
 
 		test01SaveAndCreate();
 		// test02FindAndDelete();
+		// test03UpdateProduct();
 		System.out.println("<-------- Finish Running");
 	}
 
@@ -77,12 +78,12 @@ public class AppApplication implements CommandLineRunner {
 		serviceOrder.findAllOrder().forEach(System.out::println);
 
 		System.out.println("\nProduct Get Full Price");
-		System.out.println("P1 con IVA: " + p1.getFullPriceProduct(true));
-		System.out.println("P1 senza IVA: " + p1.getFullPriceProduct(false));
+		System.out.println("P1 con IVA: " + p1.getFullPrice(true));
+		System.out.println("P1 senza IVA: " + p1.getFullPrice(false));
 
 		System.out.println("\nOrder Get Full Price");
-		System.out.println("O1 con IVA: " + o1.getFullPriceOrder(true));
-		System.out.println("O1 senza IVA: " + o1.getFullPriceOrder(false));
+		System.out.println("O1 con IVA: " + o1.getFullPrice(true));
+		System.out.println("O1 senza IVA: " + o1.getFullPrice(false));
 
 	}
 
@@ -109,6 +110,18 @@ public class AppApplication implements CommandLineRunner {
 		// System.out.println();
 		// serviceProduct.deleteProduct(p6);
 		// serviceProduct.findAllProduct().forEach(System.out::println);
+	}
+
+	public void test03UpdateProduct() {
+
+		try {
+
+			Product p7 = new Product("SOSTITUZIONE", 0000, 0000);
+			serviceProduct.updateProduct(1, p7);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }
