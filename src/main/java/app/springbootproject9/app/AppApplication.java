@@ -38,6 +38,7 @@ public class AppApplication implements CommandLineRunner {
 		// test02FindAndDelete();
 		// test03UpdateProduct();
 		System.out.println("<-------- Finish Running");
+		
 	}
 
 	public void test01SaveAndCreate() {
